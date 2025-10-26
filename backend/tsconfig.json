@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // ✅ Directory structure
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // ✅ Use CommonJS (best for Express + Node)
+    "module": "commonjs",
+    "target": "ES2020",
+
+    // ✅ Node.js compatibility
+    "lib": ["ESNext"],
+    "types": ["node"],
+
+    // ✅ Allow importing default exports like "import express from 'express'"
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    // ✅ Type safety
+    "strict": true,
+    "skipLibCheck": true,
+
+    // ✅ Helpful during development
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
