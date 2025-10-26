@@ -14,7 +14,7 @@
 
     // ✅ Allow importing default exports like "import express from 'express'"
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    // "moduleResolution": "node",
     "resolveJsonModule": true,
 
     // ✅ Type safety
