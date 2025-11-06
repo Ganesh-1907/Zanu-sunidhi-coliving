@@ -1,15 +1,23 @@
 // src/db.ts
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export const connectDB = async (): Promise<void> => {
+dotenv.config();
+
+const MONGODB_URI = process.env.MONGODB_URI as string;
+
+if (!MONGODB_URI) {
+  throw new Error("❌ Please define MONGODB_URI in .env file");
+}
+
+export async function connectDB() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://bora1132004:Ganesh1907@cluster0.a93zhxx.mongodb.net/myDatabaseName?retryWrites=true&w=majority"
-    );
-    console.log("✅ MongoDB connected successfully");
-
-  } catch (error: any) {
-    console.error("❌ MongoDB connection failed:", error.message);
+    const conn = await mongoose.connect(MONGODB_URI, {
+      serverSelectionTimeoutMS: 8000, // optional for faster feedback
+    });
+    console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error);
     process.exit(1);
   }
-};
+}
